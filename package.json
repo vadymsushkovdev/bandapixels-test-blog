@@ -5,7 +5,7 @@
   "main": "./src/config/server/index.ts",
   "scripts": {
     "build": "tsc --skipLibCheck",
-    "start": "ts-node ./src/config/server/index.ts"
+    "start:watch": "ts-node ./src/config/server/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -36,6 +36,7 @@
     "@types/compression": "1.7.0",
     "@types/cookie-parser": "1.4.2",
     "@types/cors": "2.8.10",
-    "@types/express": "4.17.12"
+    "@types/express": "4.17.12",
+    "prettier": "^2.3.0"
   }
 }
