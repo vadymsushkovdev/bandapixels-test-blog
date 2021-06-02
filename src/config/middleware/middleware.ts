@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import type { Application } from "express";
 
-const Middleware = (app: Application) => {
+export const Middleware = (app: Application) => {
   app.use(helmet());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
@@ -14,4 +14,3 @@ const Middleware = (app: Application) => {
   app.use(cors());
 };
 
-export default Middleware;
