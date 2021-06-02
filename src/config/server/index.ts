@@ -5,7 +5,7 @@ import Routes from "@components/router";
 
 const app = express();
 
-Middleware.configure(app);
+Middleware(app);
 
 Routes(app);
 

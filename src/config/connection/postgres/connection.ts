@@ -1,43 +1,38 @@
-import { Pool } from "pg";
+import sequelize from "sequelize";
 import IConnectOptions from "./interfaces/interface";
-
-const connectOptions: IConnectOptions = {
-  user: `${process.env.POSTGRES_USER}`,
-  host: `${process.env.POSTGRES_HOST}`,
-  database: `${process.env.POSTGRES_DB}`,
-  password: `${process.env.POSTGRES_PASSWORD}`,
-  port: Number(process.env.POSTGRES_PORT),
-  max: 1000,
-};
+import postgresOptions from "./config.postgres";
 
 class Connection {
   private readonly _options: IConnectOptions;
-  private _instance: Pool | null;
+  private _instance: sequelize.Sequelize | null;
 
   constructor(options: IConnectOptions) {
     this._options = options;
     this._instance = null;
   }
 
-  init(): Pool {
-    const pool: Pool = new Pool(connectOptions);
-    pool.connect((err, client, release) => {
-      if (err) {
-        return console.error("Error acquiring client", err.stack);
+  init(): sequelize.Sequelize {
+    const connection: sequelize.Sequelize = new sequelize.Sequelize(
+      postgresOptions.database,
+      postgresOptions.user,
+      postgresOptions.password,
+      {
+        port: postgresOptions.port,
+        host: postgresOptions.host,
+        dialect: "postgres",
+        pool: {
+          min: 0,
+          max: postgresOptions.max,
+          acquire: postgresOptions.acquire,
+          idle: postgresOptions.idle,
+        },
       }
-      client.query("SELECT NOW()", (err, result) => {
-        release();
-        if (err) {
-          return console.error("Error executing query", err.stack);
-        }
-        console.log(result.rows);
-      });
-    });
+    );
 
-    return pool;
+    return connection;
   }
 
-  getInstance(): Pool {
+  getInstance(): sequelize.Sequelize {
     if (!this._instance) {
       this._instance = this.init();
     }
@@ -46,4 +41,4 @@ class Connection {
   }
 }
 
-export default new Connection(connectOptions).getInstance();
+export default new Connection(postgresOptions).getInstance();

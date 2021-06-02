@@ -1,6 +1,5 @@
 import redis, { RedisClient } from "redis";
-
-const connectOptions: string = `${process.env.REDIS_PATH}:${process.env.REDIS_PORT}`;
+import redisOptions from "./config.redis";
 
 class Connection {
   private readonly _options: string;
@@ -37,4 +36,4 @@ class Connection {
   }
 }
 
-export default new Connection(connectOptions).getInstance();
+export default new Connection(redisOptions.redisPath).getInstance();

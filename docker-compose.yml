@@ -20,7 +20,7 @@ services:
   app:
     image: node:12
     container_name: app
-    command: bash -c "npm i && npm run start"
+    command: bash -c "npm i && npm run start:watch"
     restart: always
     working_dir: /var/www/app
     volumes:
