@@ -1,0 +1,35 @@
+version: "3"
+volumes:
+  pgdata:
+services:
+  postgres:
+    image: postgres:13
+    environment:
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_USER: postgres
+        POSTGRES_DB: dev_db
+    restart: always
+    volumes:
+        - pgdata:/var/lib/postgresql/data
+    ports:
+        - 5432:5432
+  redis:
+    container_name: redis
+    image: redis:6
+    restart: always
+    ports:
+        - 6379:6379
+  app:
+    image: node:12
+    container_name: app
+    command: bash -c "npm i && npm run start:watch"
+    restart: always
+    working_dir: /var/www/app
+    volumes:
+        - ./:/var/www/app:cached
+    depends_on:
+        - postgres
+        - redis
+    ports:
+        - 3000:3000
+
