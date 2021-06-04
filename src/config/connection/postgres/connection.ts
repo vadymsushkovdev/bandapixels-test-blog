@@ -1,7 +1,7 @@
 import sequelize from 'sequelize';
-import postgresOptions from './config.postgres';
+import { postgresOptions } from './config.postgres';
 
-export const connection: sequelize.Sequelize = new sequelize.Sequelize(
+export const connection = new sequelize.Sequelize(
   postgresOptions.database,
   postgresOptions.user,
   postgresOptions.password,

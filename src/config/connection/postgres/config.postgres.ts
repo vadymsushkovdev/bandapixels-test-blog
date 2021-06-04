@@ -1,4 +1,6 @@
-export default {
+import { IPostgresOptions } from "./interfaces/interface";
+
+export const postgresOptions: IPostgresOptions = {
   user: `${process.env.POSTGRES_USER}`,
   host: `${process.env.POSTGRES_HOST}`,
   database: `${process.env.POSTGRES_DB}`,

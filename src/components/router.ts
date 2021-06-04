@@ -1,7 +1,7 @@
-import express from 'express';
+import express, {Application} from 'express';
 import http from 'http';
 
-export default function router(app: express.Application): void {
+export const Router = (app: Application) => {
   const router: express.Router = express.Router();
 
   app.use((req, res, next) => {

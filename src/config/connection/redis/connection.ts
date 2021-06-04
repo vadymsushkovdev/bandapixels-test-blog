@@ -1,5 +1,5 @@
 import redis, { RedisClient } from 'redis';
-import redisOptions from './config.redis';
+import { redisOptions } from './config.redis';
 
 export const redisClient: RedisClient = redis.createClient(redisOptions.redisPath);
 
