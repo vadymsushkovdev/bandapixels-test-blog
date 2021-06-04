@@ -1,5 +1,6 @@
-import {IServerConfig} from "./interfaces/interface";
+import { IServerConfig } from "./interfaces/interface";
+import { env } from "../env.configs/env.config";
 
 export const serverConfig: IServerConfig = {
-  port: Number(process.env.PORT) || 3000,
+  port: env.PORT ?? 3000,
 };

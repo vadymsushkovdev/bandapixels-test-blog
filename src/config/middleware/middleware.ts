@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import type { Application } from "express";
 
-export const Middleware = (app: Application) => {
+export const mountMiddleware = (app: Application) => {
   app.use(helmet());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());

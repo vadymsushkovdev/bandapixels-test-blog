@@ -1,14 +1,14 @@
 import express from 'express';
 import 'module-alias/register';
 import { serverConfig } from './config.server'
-import { Middleware } from '@middleware/middleware';
-import { Router } from '@components/router';
+import { mountMiddleware } from '@middleware/middleware';
+import { mountRouter } from '@components/router';
 
 const app = express();
 
-Middleware(app);
+mountMiddleware(app);
 
-Router(app);
+mountRouter(app);
 
 app.set('port', serverConfig.port);
 
