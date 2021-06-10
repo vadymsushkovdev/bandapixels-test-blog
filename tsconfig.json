@@ -16,7 +16,10 @@
     "esModuleInterop": true,
     "paths": {
       "@middleware/*": ["./src/config/middleware/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@env.config/*": ["./src/config/env.configs/*"],
+      "@connection/*": ["./src/config/connection/*"],
+      "@models/*": ["./models/*"]
     }
   }
 }

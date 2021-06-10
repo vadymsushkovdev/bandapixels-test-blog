@@ -1,6 +1,6 @@
 import express from 'express';
 import 'module-alias/register';
-import { serverConfig } from './config.server'
+import { serverConfig } from './config.server';
 import { mountMiddleware } from '@middleware/middleware';
 import { mountRouter } from '@components/router';
 

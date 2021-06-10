@@ -1,7 +1,7 @@
-import redis, { RedisClient } from 'redis';
+import { RedisClient, createClient } from 'redis';
 import { redisOptions } from './config.redis';
 
-export const redisClient: RedisClient = redis.createClient(redisOptions.redisPath);
+export const redisClient: RedisClient = createClient(redisOptions.redisPath);
 
 redisClient.on('error', console.error);
 redisClient.on('ready', () =>

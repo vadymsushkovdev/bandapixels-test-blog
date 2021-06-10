@@ -1,12 +1,10 @@
-import { IPostgresOptions } from "./interfaces/interface";
+import { IPostgresOptions } from './interfaces/interface';
+import { env } from '@env.config/env.config';
 
 export const postgresOptions: IPostgresOptions = {
-  user: `${process.env.POSTGRES_USER}`,
-  host: `${process.env.POSTGRES_HOST}`,
-  database: `${process.env.POSTGRES_DB}`,
-  password: `${process.env.POSTGRES_PASSWORD}`,
-  port: Number(process.env.POSTGRES_PORT),
-  max: 1000,
-  acquire: 30000,
-  idle: 10000,
+  user: env.POSTGRES_USER,
+  host: env.POSTGRES_HOST,
+  database: env.POSTGRES_DEV_DB,
+  password: env.POSTGRES_PASSWORD,
+  dialect: 'postgres',
 };
