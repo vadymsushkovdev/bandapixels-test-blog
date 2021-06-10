@@ -1,9 +1,9 @@
-import helmet from "helmet";
-import bodyParser from "body-parser";
-import compression from "compression";
-import cookieParser from "cookie-parser";
-import cors from "cors";
-import type { Application } from "express";
+import helmet from 'helmet';
+import bodyParser from 'body-parser';
+import compression from 'compression';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import type { Application } from 'express';
 
 export const mountMiddleware = (app: Application) => {
   app.use(helmet());
@@ -13,4 +13,3 @@ export const mountMiddleware = (app: Application) => {
   app.use(compression());
   app.use(cors());
 };
-

@@ -1,5 +1,6 @@
-import {IRedisOptions} from "./interfaces/interface";
+import { IRedisOptions } from './interfaces/interface';
+import { env } from '@env.config/env.config';
 
 export const redisOptions: IRedisOptions = {
-  redisPath: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`,
+  redisPath: `redis://${env.REDIS_HOST}:${env.REDIS_PORT}`,
 };
